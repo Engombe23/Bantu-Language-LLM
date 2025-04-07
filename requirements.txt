@@ -1,0 +1,9 @@
+torch
+transformers
+datasets
+pandas
+numpy
+sacrebleu
+sentencepiece
+tqdm
+psutil

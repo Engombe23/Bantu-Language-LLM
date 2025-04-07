@@ -1,0 +1,36 @@
+model:
+  name: "Helsinki-NLP/opus-mt-en-sw"  
+  vocab_size: 32000  # Vocabulary size for MarianMT models
+  hidden_size: 512  
+  num_attention_heads: 8  
+  num_layers: 6  
+  dropout: 0.1  
+  max_position_embeddings: 256  
+
+training:
+  batch_size: 1
+  learning_rate: 3e-5
+  weight_decay: 0.01
+  gradient_accumulation_steps: 2
+  max_epochs: 3
+  warmup_steps: 1000
+  max_grad_norm: 1.0
+  save_steps: 500
+  eval_steps: 1000
+  logging_steps: 50
+  fp16: false  # No fp16 for CPU training
+
+tokenizer:
+  type: "BPE"  # MarianMT uses BPE (Byte-Pair Encoding) tokenizer
+  vocab_size: 32000  # Matching vocab size of the model
+  model_type: "bpe"
+
+dataset:
+  train_path: "../../data/dataset/en-sw-dataset.json"
+  test_path: "../../data/dataset/en-sw-dataset.json"
+  source_lang: "sw"
+  target_lang: "en"
+
+output:
+  save_dir: "../../output"
+  log_dir: "../../logs"
